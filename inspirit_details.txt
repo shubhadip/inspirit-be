@@ -1,0 +1,43 @@
+Database: 
+
+database_name : inspirit
+database_username : root
+database_password : 123456
+
+Apis:
+/api/login       --- user login api
+/api/validate    --- validate user token
+/api/signup      --- register user
+/api/getuser/:id --- get current user details
+/api/buy         --- purchase bitcoin
+/api/sell        --- sell bitcoin
+
+Repo Consits Of  :
+/cmd/api directory which has  main.go file
+dockerfile
+docker-compose.yml
+
+models/models.go has table definitions
+
+Docker Commands: 
+# docker build -t inspirit_golang .
+# docker compose up
+
+Flows:
+
+Signup:
+1. after successfull registration user is redirected to login page
+2. we are adding 500000 as default wallet amount on registration
+
+Login:
+1. After Login user is registration to homepage where he can buy/sell bitcoin
+ also 1 bitoin value is show to the user
+2. On homepage after login we calling user api to get current user details like wallet & bitcoin values
+3. Every request is validated using validate function in backend except register,login api.
+
+Buy/Sell:
+1. if user is logged in, he can buy bitcoin, validations are there in BE/FE code
+2. also every purchase is handled via transaction queries to main ACID  
+
+
+

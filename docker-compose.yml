@@ -1,0 +1,19 @@
+version: "3.3"
+services:
+  web:
+    image: inspirit_golang
+    environment:
+      FROM_IMAGE: ${FROM_IMAGE}
+    links:
+      - db
+    ports:
+      - 4000:4000
+  db:
+    container_name: db_mysql
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DB}
+      MYSQL_ROOT_USER: ${MYSQL_USERNAME}
+    ports:
+      - 3307:3306
